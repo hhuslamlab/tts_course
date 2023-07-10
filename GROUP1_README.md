@@ -23,6 +23,16 @@ The voice currently contains:
 
 As these elements constitute the essential parts of a Festival voice.
 
+In order to use this voice, you need to save the group1_german_festival_voice.scm file on your computer. Then run Festival and load the voice, including phoneset and lexicon, from the file, using:
+
+(load "group1_german_festival_voice.scm")
+
+This should return "nil", which means the phoneset, lexicon and the voice using them should be defined. Now simply select the voice with:
+
+(voice_assignment)
+
+This should return the name of the voice, so "assignment" in this case. With this, you have successfully defined and selected the voice.
+
 HOWEVER, due to the prototypical nature of the voice, the following things need to be kept in mind!
 
 ## Phoneset
