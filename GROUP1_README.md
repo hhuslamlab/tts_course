@@ -6,6 +6,18 @@ This voice was created in the context of the Synthesizing Speech seminar, taught
 
 The participants of this group project and contributors to this voice were, in alphabetical order: Aziza Fakiri, Mara Geißen, Rama Asrida Febryani Hutasoit, Andre Oppenheimer, Roman Pollmeier, Jasper Schmidt and Luca Michael Schulte-Kellinghaus.
 
+## How to use
+
+In order to use this voice, you need to save the group1_german_festival_voice.scm file on your computer. Then run Festival and load the voice, including phoneset and lexicon, from the file, using:
+
+(load "group1_german_festival_voice.scm")
+
+This should return "nil", which means the phoneset, lexicon and the voice using them should be defined. Now simply select the voice with:
+
+(voice_assignment)
+
+This should return the name of the voice, so "assignment" in this case. With this, you have successfully defined and selected the voice.
+
 ## General Information
 
 This voice represents the very basic foundation for a new German Festival TTS voice, a building block that ideally can be improved and expanded upon to create a fully fledged voice.
@@ -22,16 +34,6 @@ The voice currently contains:
 - A waveform synthesis module
 
 As these elements constitute the essential parts of a Festival voice.
-
-In order to use this voice, you need to save the group1_german_festival_voice.scm file on your computer. Then run Festival and load the voice, including phoneset and lexicon, from the file, using:
-
-(load "group1_german_festival_voice.scm")
-
-This should return "nil", which means the phoneset, lexicon and the voice using them should be defined. Now simply select the voice with:
-
-(voice_assignment)
-
-This should return the name of the voice, so "assignment" in this case. With this, you have successfully defined and selected the voice.
 
 HOWEVER, due to the prototypical nature of the voice, the following things need to be kept in mind!
 
