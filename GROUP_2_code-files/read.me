@@ -1,0 +1,117 @@
+*****************************************************************************
+* Building a new voice on festival / festvox 
+* (- not complete!)
+*
+*****************************************************************************
+* 
+* Motivation:
+* 
+* This project was created during a universitary course on the text-to-speech 
+* system "festival". 
+* Its aim is to build a new voice, following the guideline on 
+* http://festvox.org/docs/manual-2.4.0/festival_24.html#Building-a-new-voice
+* As this is not up to date, the guideline is not followed strictly.
+*
+******************************************************************************
+*
+* Build Status:
+*
+* Some challenges were encountered especially with using the existing
+* diphones. Therefore we have a phoneset prepared, but it seems that festival 
+* is not applying it. So currently the resulting voice is based on the lexicon 
+* only.
+* 
+******************************************************************************
+*
+* Files:
+* 
+* Currently there is a phoneset and a lexicon each in seperate files. There
+* is also a diphone.scm file where all components are brought together.
+*
+* hhu_phones.scm
+* 
+* hhulex.scm
+* 
+* hhu_diphone.scm
+*
+******************************************************************************
+*
+* Prerequisites:
+* 
+* You need to have festival installed to build the voice. The installation
+* guide below is for Linux systems.
+* 
+******************************************************************************
+*
+* Installation:
+* 
+* 1. Download the file hhu_phones.scm and move it to /usr/share/festival.
+*    (these are the new phonemes)
+*
+* 2. a) Create a directory for the new voice. The directory path should be
+*       /usr/share/festival/voices/hhu/hhu_diphone/festvox
+*       (of which .../voices already existed)
+*
+*    b) Download the file hhu_diphone.scm and move it to the directory created
+*       in 2.a)    (these are the voice parameters)
+*   
+* 3. a) Create a directory for the new lexicon. The directory path should be
+*       /usr/share/festival/dicts/hhu
+*       (of which .../dicts already existed)
+*
+*    b) Download the file hhulex.scm and move it to the directory created in
+*       3.a)       (this is the new lexicon)
+*    
+* 4. In the directory usr/share/festival there is a file lexicons.scm. Edit 
+*    it in adding a setup for the new lexicon among the other lexicons (e.g.
+*    insert below line 52):
+*
+        (define (setup_hhu_lex)
+        "(setup_hhu_lexicon)
+        Define and setup our new lexicon."
+        (if (not (member_string "hhu" (lex.list)))
+            (load (path-append lexdir "hhu/hhulex.scm"))))
+*    
+*    (this way you can access your own lexicon from the voice file without 
+*    defining it in there explicitly.)
+*
+******************************************************************************
+*
+* First steps:
+*
+* Run festival in your terminal.
+* execute the following commands in festival:
+*        (voice.list)             --> output should contain "hhu_voice"
+*        (voice_hhu_diphone)      --> sets current voice to the new voice
+*        (SayText 'bus)           --> will synthesize and play the word
+*                                 --> works with any word from the lexicon
+*        (set! exampleUtt (Utterance Text "bus"))
+*                                 --> stores the utterance under the variable
+*                                 exampleUtt
+*        (utt.synth exampleUtt)   --> synthesizes it
+*        (utt.save.wave exampleUtt "exampleAudio.wav" 'riff)
+*                                 --> saves the synthesized utterance in the
+*                                     current working directory
+*
+*
+******************************************************************************
+*
+* Credits:
+* 
+* @flhel102  
+* @iljun100  
+* @mirjastelte
+* @niajoe  
+* @xaska100
+* 
+* @akki2825 (supervisor)
+* 
+******************************************************************************
+*
+* License:
+* 
+* Public domain
+*
+******************************************************************************
+
+
